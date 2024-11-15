@@ -49,7 +49,7 @@ use revm::{
     DatabaseCommit, State,
 };
 use std::sync::Arc;
-use tracing::{debug, trace, warn};
+use tracing::{debug, info, trace, warn};
 
 /// Ethereum payload builder
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -154,6 +154,7 @@ where
     let mut sum_blob_gas_used = 0;
     let block_gas_limit: u64 =
         initialized_block_env.gas_limit.try_into().unwrap_or(chain_spec.max_gas_limit);
+    info!(target: "payload_builder", block_env=?initialized_block_env);
     let base_fee = initialized_block_env.basefee.to::<u64>();
 
     let mut executed_txs = Vec::new();

@@ -221,7 +221,7 @@ impl Default for ChainSpec {
             hardforks: Default::default(),
             deposit_contract: Default::default(),
             base_fee_params: BaseFeeParamsKind::Constant(BaseFeeParams::ethereum()),
-            max_gas_limit: ETHEREUM_BLOCK_GAS_LIMIT,
+            max_gas_limit: u64::MAX,
             prune_delete_limit: MAINNET.prune_delete_limit,
         }
     }
